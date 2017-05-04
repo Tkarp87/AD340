@@ -22,13 +22,13 @@ import java.util.List;
          * View holder class
          * */
         public class MyViewHolder extends RecyclerView.ViewHolder {
-            public TextView countryText;
-            public TextView popText;
+            public TextView itemName;
+            public TextView brandName;
 
             public MyViewHolder(View view) {
                 super(view);
-                countryText = (TextView) view.findViewById(R.id.itemName);
-                popText = (TextView) view.findViewById(R.id.brand);
+                itemName = (TextView) view.findViewById(R.id.itemName);
+                brandName = (TextView) view.findViewById(R.id.brand);
             }
         }
 
@@ -39,8 +39,8 @@ import java.util.List;
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             Item c = itemList.get(position);
-            holder.countryText.setText(c.name);
-            holder.popText.setText(String.valueOf(c.brand));
+            holder.itemName.setText(c.name);
+            holder.brandName.setText(String.valueOf(c.brand));
         }
 
         @Override

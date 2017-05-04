@@ -7,8 +7,8 @@
     tools:context="com.example.travis.ad340.AboutActivity">
 
     <RelativeLayout
-        android:layout_width="379dp"
-        android:layout_height="563dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -20,9 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.428"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        tools:layout_editor_absoluteY="-8dp"
-        tools:layout_editor_absoluteX="-6dp">
+        android:layout_marginEnd="8dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
@@ -33,6 +31,26 @@
             android:layout_marginTop="0px"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <TextView
+            android:id="@+id/tv_about_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="About"
+            android:textSize="30sp"
+            android:layout_below="@+id/my_toolbar"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/tv_about_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_about_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"
+            android:text="This program is for the Mobile Application Development class at North Seattle College. It is designed as a mobile version of my Capstone project."
+            android:textSize="18sp" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

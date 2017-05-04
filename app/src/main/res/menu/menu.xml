@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item android:id="@+id/action_search"
+    <item android:id="@+id/search"
         android:title="Search"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.support.v7.widget.SearchView" />
@@ -11,6 +11,11 @@
     <item
         android:id="@+id/action_category"
         android:title="Categories"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_main"
+        android:title="Main"
         app:showAsAction="never"/>
 
     <item
@@ -23,8 +28,4 @@
         android:title="About"
         app:showAsAction="never"/>
 
-    <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
-        android:title="Settings"
-        app:showAsAction="never"/>
 </menu>

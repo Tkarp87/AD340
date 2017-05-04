@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">AD340</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="preference_title">Pick your preferences</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="search_hint">Pumpkin Ale</string>
+    <string-array name="preference_array">
+        <item>Beer</item>
+        <item>Wine</item>
+        <item>Cider</item>
+        <item>Spirit</item>
+    </string-array>
+    <string name="title_activity_search_results">SearchResultsActivity</string>
 </resources>

@@ -1,9 +1,14 @@
 package com.example.travis.ad340;
 
-import android.support.v7.app.AppCompatActivity;
+
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.example.travis.ad340.Adapters.Item;
 import com.example.travis.ad340.Adapters.ItemAdapter;
@@ -11,7 +16,7 @@ import com.example.travis.ad340.Adapters.ItemAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryResultActivity extends AppCompatActivity {
+public class CategoryResultActivity extends MainActivity {
 
     private List<Item> itemList = new ArrayList<>();
     @Override
@@ -26,8 +31,29 @@ public class CategoryResultActivity extends AppCompatActivity {
         ItemAdapter ia = new ItemAdapter(itemList);
         rv.setAdapter(ia);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        // Enable the Up button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+        return true;
+    }
+
     private void createList() {
         itemList.add(new Item("Summer Wheat", "Shocktop"));
         itemList.add(new Item("Crisp Apple Wheat", "Shocktop"));
