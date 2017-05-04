@@ -9,21 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity"
+            android:parentActivityName="com.example.travis.ad340.MainActivity">
+        </activity>
         <activity android:name=".CategoryActivity"
                   android:parentActivityName="com.example.travis.ad340.MainActivity"/>
         <activity android:name=".CategoryResultActivity"
                   android:parentActivityName="com.example.travis.ad340.MainActivity"/>
         <activity android:name=".AboutActivity"
                   android:parentActivityName="com.example.travis.ad340.MainActivity"/>
+
+
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
