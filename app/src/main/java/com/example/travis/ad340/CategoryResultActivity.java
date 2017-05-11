@@ -3,6 +3,8 @@ package com.example.travis.ad340;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,30 +46,33 @@ public class CategoryResultActivity extends MainActivity {
 
         String url = "https://sippable-laravel-tkarp87.c9users.io/API/items";
 
-        JsonArrayRequest jsArrayRequest = new JsonArrayRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        if(isNetworkConnected(getApplicationContext())) {
+            JsonArrayRequest jsArrayRequest = new JsonArrayRequest
+                    (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        //mTxtDisplay.setText("Response: " + response.toString());
-                        JSONParseItemList parse = new JSONParseItemList();
-                        List<Item> itemList = parse.JsonParse(response);
-                        ItemAdapter ia = new ItemAdapter(itemList, getApplicationContext());
-                        rv.setAdapter(ia);
-                    }
-                }, new Response.ErrorListener() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            JSONParseItemList parse = new JSONParseItemList();
+                            List<Item> itemList = parse.JsonParse(response);
+                            ItemAdapter ia = new ItemAdapter(itemList, getApplicationContext());
+                            rv.setAdapter(ia);
+                        }
+                    }, new Response.ErrorListener() {
 
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(CategoryResultActivity.this, "" + error,
-                                Toast.LENGTH_SHORT).show();
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(CategoryResultActivity.this, "" + error,
+                                    Toast.LENGTH_SHORT).show();
 
-                    }
-                });
+                        }
+                    });
 
-        // Access the RequestQueue through your singleton class.
-        VolleySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
-
+            // Access the RequestQueue through your singleton class.
+            VolleySingleton.getInstance(this).addToRequestQueue(jsArrayRequest);
+        } else {
+            Toast.makeText(CategoryResultActivity.this, "We're sorry but there is no internet connection.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -83,5 +88,11 @@ public class CategoryResultActivity extends MainActivity {
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
         return true;
+    }
+    public static boolean isNetworkConnected(Context ctx) {
+        ConnectivityManager cm = (ConnectivityManager)
+                ctx.getSystemService (Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        return ni != null && ni.isConnectedOrConnecting();
     }
 }
