@@ -9,12 +9,16 @@ import com.example.travis.ad340.R;
  */
 
 public class Item {
+    protected int id;
     protected String name;
     protected String brand;
+    protected String url;
 
-    public Item(String name, String brand) {
+    public Item(int id, String name, String brand, String url) {
+        this.id = id;
         this.name = name;
         this.brand = brand;
+        this.url = url;
     }
 }
 
