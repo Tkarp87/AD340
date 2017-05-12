@@ -23,7 +23,6 @@ public class CategoryActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-
         Intent welcome = getIntent();
         String message = welcome.getStringExtra("EXTRA_MESSAGE");
 
