@@ -27,5 +27,9 @@
         android:id="@+id/action_about"
         android:title="About"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_map"
+        android:title="Maps"
+        app:showAsAction="never"/>
 
 </menu>

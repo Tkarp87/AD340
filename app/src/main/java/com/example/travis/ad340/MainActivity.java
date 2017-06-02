@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent about = new Intent(this, AboutActivity.class);
                 startActivity(about);
                 return true;
+            case R.id.action_map:
+                Intent map = new Intent(this, MapsActivity.class);
+                startActivity(map);
+                return true;
 
             default:
                 // If we got here, the user's action was not recognized.
